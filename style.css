@@ -1,8 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+        font-family: HeavyGothik;
+        src: url('fonts/Heavy Gothik.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
 body
 {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 100px;
-    background-color: #ffccda;
+    font-family: 'Playfair Display', serif;
+    background-color: #0e0e0f;
+    color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    align-items: center;
+    min-height: 80vh;
 
+}
+
+/* the base */
+.site-wrapper
+{
+    width: 785px;
+    background: linear-gradient(to bottom, #111, #000);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+/* pink bit around the base */
+header, footer {
+    text-align: center;
+    padding: 5px;
+    background: linear-gradient(to bottom, #f6b3c5, #6E3244);
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+}
+
+footer
+{
+    
+    border-top: 2px solid #000;
+
+}
+
+/* makes left and right sections */
+.layout
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    gap: 40px;
+}
+
+/* left section details */
+.left
+{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 5px;
+   text-align: center;
+}
+
+/* right section details */
+.right
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+}
+
+.spotify-container
+{
+    position: relative;
+    display: inline-block;
+    width: 300px;
+
+}
+
+.frame-image
+{
+    margin-left: -45px;
+    margin-top: -40px;
+    width: 135%;
+    display: block;
+}
+
+.frame-cover-image
+{
+    position:absolute;
+    width: 45%;
+    display: block;
+    margin-top: -330px;
+}
+
+.spotify-placeholder
+{
+    position: absolute;
+    top: 15%;
+    left: 76%;
+   transform: translate(-50%, -50%);
+   width: 100%;
+   text-align: center;
+}
+.moe-circle-image
+{
+    
+    width: 200px;
+    height: 200px;
+    margin-top: -50px;
+    margin-bottom: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(255, 150, 200, 0.3);
+}
+
+.me-circle-image
+{
+    width: 200px;
+    height: 200px;
+    margin-top: 0px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(255, 150, 200, 0.3);
+}
+
+/* makes the image fit the circle */
+.moe-circle-image img, .me-circle-image img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h1
+{
+    font-family: HeavyGothik, serif;
+    font-size: 50px;
+}
+
+h2
+{
+    font-size: 25px;
+    margin-bottom: 0px;
+    
+}
+
+h3
+{
+    font-size: 20px;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   color: #f6b3c5;
+   
+}
+
+h4
+{
+    font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #f6b3c5;
+}
+
+h5
+{
+    font-size: 13px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #ffffff
+}
+
+p
+{
+    margin-top: 0px;
+    font-size: 14.5px;
+    max-width: 400px;
+    line-height: 1.7;
+}
+
+/* makes the socials section prettay */
+.socials a
+{
+padding: 4px 10px;
+border-radius: 20px;
+background: linear-gradient(to bottom, #f6b3c5, #6E3244);
+    color: rgb(0, 0, 0);
+text-decoration: none;
+transition: 0.3s;
+}
+
+/* makes the pink bit around the socials when you hover over them */
+.socials a:hover
+{
+   background: linear-gradient(to bottom, #fccfdb, #cf7b94);
+    color: rgb(0, 0, 0);
+}   
+
+.mini-gifs
+{
+    display: flex; /* makes the gifs line up in a row */
+    flex-wrap: wrap; /* allows wrapping to next line */
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+@media (max-height: 850px)
+{
+    .site-wrapper {
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
 }
