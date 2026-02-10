@@ -1,225 +1,541 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-@font-face {
-        font-family: HeavyGothik;
-        src: url('fonts/Heavy Gothik.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
+    @font-face {
+            font-family: HeavyGothik;
+            src: url('fonts/Heavy Gothik.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-body
-{
-    font-family: 'Playfair Display', serif;
-    background-color: #0e0e0f;
-    color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    padding: 40px 0;
-    align-items: center;
-    min-height: 80vh;
 
-}
+    body
+    {
+        font-family: 'Playfair Display', serif;
+        background-color: #0e0e0f;
+        color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        padding: 40px 0;
+        align-items: center;
+        min-height: 80vh;
 
-/* the base */
-.site-wrapper
-{
-    width: 785px;
-    background: linear-gradient(to bottom, #111, #000);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
-}
+    }
 
-/* pink bit around the base */
-header, footer {
-    text-align: center;
-    padding: 5px;
-    background: linear-gradient(to bottom, #f6b3c5, #6E3244);
-    color: rgb(0, 0, 0);
-    font-size: 22px;
-}
+    /* the base */
+    .site-wrapper
+    {
+        width: 785px;
+        background: linear-gradient(to bottom, #111, #000);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    }
 
-footer
-{
-    
-    border-top: 2px solid #000;
+    /* pink bit around the base */
+    header, footer {
+        text-align: center;
+        padding: 5px;
+        background: linear-gradient(
+            180deg,
+            #ffd1e3 0%,
+            #f6b3c5 40%,
+            #6E3244 100%
+            );
+            position: relative;
+        color: rgb(0, 0, 0);
+        font-size: 22px;
+    }
 
-}
+    header::after
+    {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: rgba(255,255,255,0.6);
+    }
+    footer
+    {
+        
+        border-top: 2px solid #000;
 
-/* makes left and right sections */
-.layout
-{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 10px;
-    gap: 40px;
-}
+    }
 
-/* left section details */
-.left
-{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 5px;
-   text-align: center;
-}
+    /* makes left and right sections */
+    .layout
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+        gap: 40px;
+    }
 
-/* right section details */
-.right
-{
+    /* left section details */
+    .left
+    {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    text-align: center;
-}
-
-.spotify-container
-{
+    gap: 20px;
+    text-align: flex-start;
+    padding-bottom: 10px;
     position: relative;
-    display: inline-block;
-    width: 300px;
+    }
 
-}
+    /* right section details */
+    .right
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        text-align: center;
+    }
 
-.frame-image
-{
-    margin-left: -45px;
-    margin-top: -40px;
-    width: 135%;
-    display: block;
-}
+    .right h3
+    {
+        margin-top: 12px;
+    }
 
-.frame-cover-image
-{
-    position:absolute;
-    width: 45%;
-    display: block;
-    margin-top: -330px;
-}
+    .right p
+    {
+        font-size: 14px;
+    }
 
-.spotify-placeholder
-{
-    position: absolute;
-    top: 15%;
-    left: 76%;
-   transform: translate(-50%, -50%);
-   width: 100%;
-   text-align: center;
-}
-.moe-circle-image
-{
-    
-    width: 200px;
-    height: 200px;
-    margin-top: -50px;
-    margin-bottom: 45px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 40px rgba(255, 150, 200, 0.3);
-}
+    .card p
+    {
+        text-align: left;
+    }
 
-.me-circle-image
-{
-    width: 200px;
-    height: 200px;
-    margin-top: 0px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 40px rgba(255, 150, 200, 0.3);
-}
+    .card h2
+    {
+        text-align: left;
+    }
 
-/* makes the image fit the circle */
-.moe-circle-image img, .me-circle-image img
-{
+    .spotify-container
+    {
+        position: relative;
+        display: inline-block;
+        width: 300px;
+        filter: drop-shadow(0 0 5px rgba(255,105,180,0.5));
+
+    }
+
+    .frame-image
+    {
+        margin-left: -45px;
+        margin-top: -40px;
+        width: 135%;
+        display: block;
+        position: relative;
+    }
+
+    .spotify-container::after
+    {
+        content: "";
+        position: absolute;
+        inset: -15px;
+        background: radial-gradient(
+            circle,
+            rgba(120,200,255,0.35),
+            transparent 70%
+        );
+        filter: blur(25px);
+        z-index: -1;
+    }
+
+    .frame-cover-image
+    {
+        position:absolute;
+        width: 45%;
+        display: block;
+        margin-top: -330px;
+    }
+
+    .spotify-placeholder
+    {
+        position: absolute;
+        top: 15%;
+        left: 76%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    text-align: center;
+    }
+    .stupid-rectangle-image
+    {
+        margin-top: -50px;
+        margin-bottom: 45px;
+    width: 400px;   
+    height: 225px;
+    border-radius: 14px;
+    padding: 6px;
+    overflow: hidden;
 
-h1
-{
-    font-family: HeavyGothik, serif;
-    font-size: 50px;
-}
+    background:
+        radial-gradient(circle at top left,
+        rgba(255,255,255,0.9),
+        rgba(255,255,255,0.2) 40%,
+        rgba(255,255,255,0.05) 70%
+        );
 
-h2
-{
-    font-size: 25px;
-    margin-bottom: 0px;
-    
-}
+    backdrop-filter: blur(6px);
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.5),
+        inset 0 2px 8px rgba(255,255,255,0.8),
+        inset 0 -6px 10px rgba(0,0,0,0.4);
 
-h3
-{
-    font-size: 20px;
-   margin-top: 0px;
-   margin-bottom: 0px;
-   color: #f6b3c5;
-   
-}
+        animation: floaty 6s ease-in-out infinite;
 
-h4
-{
-    font-size: 18px;
+        outline: 1px solid rgba(255,255,255,0.35);
+        outline-offset: -4px;
+    }
+
+    .me-circle-image
+    {
+        margin-top: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 6px;
+
+    background:
+        radial-gradient(circle at top left,
+        rgba(255,255,255,0.9),
+        rgba(255,255,255,0.2) 40%,
+        rgba(255,255,255,0.05) 70%
+        );
+
+    backdrop-filter: blur(6px);
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.5),
+        inset 0 2px 8px rgba(255,255,255,0.8),
+        inset 0 -6px 10px rgba(0,0,0,0.4);
+        
+        animation: floaty 6s ease-in-out infinite;
+
+        outline: 1px solid rgba(255,255,255,0.35);
+        outline-offset: -4px;
+    }
+
+    .me-circle-image::after
+    {
+        content: "";
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        width: 50%;
+        height: 25%;
+        background: rgba(255,255,255,0.35);
+        border-radius: 50%;
+        filter: blur(8px);
+    }
+
+    .stupid-rectangle-image::after
+    {
+        content: "";
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        width: 50%;
+        height: 25%;
+        background: rgba(255,255,255,0.35);
+        border-radius: 12px;
+        filter: blur(8px);
+    }   
+
+    /* makes the image fit the circle */
+    .me-circle-image img
+    {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .stupid-rectangle-image img
+    {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 14px;
+
+    }
+
+    .interests
+    {
+        background: linear-gradient(
+            180deg,
+            rgba(30,30,30,0.9),
+            rgba(10,10,10,0.9)
+        );
+        backdrop-filter: none;
+        border-radius: 28px;
+        padding: 28px;
+        box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.25);
+        border: 1px solid rgba(255,255,255,0.25);
+
+        margin-top: 30px;
+    }
+    h1
+    {
+        font-family: HeavyGothik, serif;
+        font-size: 50px;
+        text-shadow:
+        0 0 6px rgba(255,255,255,0.6),
+        0 0 14px rgba(255,105,180,0.8);
+    }
+
+    h2
+    {
+        font-size: 25px;
+        margin-bottom: 0px;
+        color: #fff9fb;
+        text-shadow: 0 0 8px rgba(255,255,255,0.6)
+        
+    }
+
+    h3
+    {
+        font-size: 20px;
     margin-top: 0px;
     margin-bottom: 0px;
     color: #f6b3c5;
-}
-
-h5
-{
-    font-size: 13px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    color: #ffffff
-}
-
-p
-{
-    margin-top: 0px;
-    font-size: 14.5px;
-    max-width: 400px;
-    line-height: 1.7;
-}
-
-/* makes the socials section prettay */
-.socials a
-{
-padding: 4px 10px;
-border-radius: 20px;
-background: linear-gradient(to bottom, #f6b3c5, #6E3244);
-    color: rgb(0, 0, 0);
-text-decoration: none;
-transition: 0.3s;
-}
-
-/* makes the pink bit around the socials when you hover over them */
-.socials a:hover
-{
-   background: linear-gradient(to bottom, #fccfdb, #cf7b94);
-    color: rgb(0, 0, 0);
-}   
-
-.mini-gifs
-{
-    display: flex; /* makes the gifs line up in a row */
-    flex-wrap: wrap; /* allows wrapping to next line */
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-}
-
-@media (max-height: 850px)
-{
-    .site-wrapper {
-        transform: scale(0.9);
-        transform-origin: top center;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 8px rgba(255, 150, 200, 0.4);
+    
     }
-}
+
+    h4
+    {
+        font-size: 18px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        color: #f6b3c5;
+    }
+
+    h5
+    {
+        font-size: 13px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        color: #ffffff
+    }
+
+    p
+    {
+        margin-top: 0px;
+        font-size: 14.5px;
+        max-width: 400px;
+        line-height: 1.7;
+        color: #e0e0e0;
+    }
+
+    .socials
+    {
+        display: flex;
+        gap: 10px;
+        align-self: flex-start;
+        margin-top: -50px;
+        margin-left: 22px;
+    }
+
+    /* makes the socials section prettay */
+    .socials a
+    {
+    display: inline-flex;
+    padding: 4px 10px;
+    text-decoration: none;
+    transition: 0.3s;
+
+    background:
+        linear-gradient(
+        180deg,
+        rgba(255,255,255,0.9),
+        rgba(220,240,255,0.6)
+        );
+    color: #000;
+    border-radius: 999px;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,1),
+        0 6px 15px rgba(0,0,0,0.4);
+
+    }
+
+    /* makes the pink bit around the socials when you hover over them */
+    .socials a:hover
+    {
+    
+        color: rgb(0, 0, 0);
+        transform: translateY(-2px);
+        background:
+        linear-gradient(
+        180deg,
+        #ffffff,
+        #d1d1d1
+        );
+
+    }   
+
+    .mini-gifs
+    {
+        display: flex; /* makes the gifs line up in a row */
+        flex-wrap: wrap; /* allows wrapping to next line */
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        box-shadow: 0 4px 10px rgba(88, 41, 55, 0.925)  ;
+    }
+
+    @media (max-height: 850px)
+    {
+        .site-wrapper {
+            transform: scale(0.9);
+            transform-origin: top center;
+        }
+    }
+
+    @media (max-width: 850px)
+    {
+        .layout
+        {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .site-wrapper
+        {
+            width: 90%;
+        }
+
+        .terminal
+        {
+            max-width: 100%;
+        }
+    }
+
+    @keyframes floaty
+    {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-6px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .terminal
+    {
+    width: 100%;
+    max-width: 320px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -7px;
+    margin-left: -33px;
+    background: linear-gradient(
+        180deg,
+         #161616,
+          #313131
+          );
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.2), 0 10px 25px rgba(0,0,0,0.7);
+    }
+
+    /* top terminal bar */
+    .terminal-bar
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 10px; 
+
+        background: linear-gradient(
+            180deg,
+            #964960,
+            #33121b
+        );
+    }
+
+    /* window buttons */
+    .terminal-buttons
+    {
+        display: flex;
+        gap: 5px;
+    }
+
+    .terminal-buttons i 
+    {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #92737d;
+        box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.4);
+    }
+
+    /* terminal text */
+    .terminal-body
+    {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px;
+        font-family: monospace;
+        font-size: 12px;
+        color: #e0e0e0;
+        word-break: break-word;
+    }
+
+    .terminal-body p
+    {
+        margin-bottom: 6px;
+        text-align: left;
+    }
+
+    /* prompt */
+    .prompt
+    {
+        color: #f6b3c5;
+    }
+
+    
+    .input-line
+    {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    #terminal-input
+    {
+        flex: 1; /* takes remaining space in flex container */
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #e0e0e0;
+        font-size: 12px;
+        width: auto; /* remove width: 100% */
+        min-width: 0; /* allows shrinking in flexbox */
+    }
+
+    @keyframes blink
+    {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+
+    .blink
+    {
+        animation: blink 1s steps(1) infinite;
+    }

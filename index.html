@@ -27,12 +27,14 @@
 
             <section class="left">
 
+                <div class="card">
+
                 <div class="intro">
                 <!-- em makes text italic -->
                 <h2><em>Hi there!</em></h2>
                 <p>You can call me Effy.<br>
                 I'm a 17 year old located in the Netherlands.<br>
-                Add me on Discord: nullptr_effy</p>
+                Use the little terminal to get my Discord >.&lt;</p>
                 </div>
 
                 <div class="spotify-container">
@@ -44,14 +46,37 @@
                     </div>
                 </div>
 
-                <div class="moe-circle-image">
-                    <img src="images/moe.png" alt="moe artstyle">
+                </div>
+
+                <div class="stupid-rectangle-image">
+                    <img src="images/stupid.png" alt="wide me">
                 </div>
 
                 <div class="socials">
                     <!-- insert social buttons -->
                     <a href="https://github.com/gwombie">GitHub</a>
                     <a href="https://www.twitch.tv/gwombie">Twitch</a>
+                </div>
+
+
+                <div class="terminal">
+                    <div class="terminal-bar">
+                        <span>effy@localhost</span>
+                        <span class="terminal-buttons">
+                            <i></i><i></i><i></i>
+                        </span>
+                    </div>
+
+                    <div class="terminal-body" id="terminal-body">
+                         <p><span class="prompt">$</span> type a command<br> (tip: type /help for command list)</p>
+                        <div class="input-line" id="terminal-input-line">
+                            <span class="prompt">$</span>
+                            <input type="text" id="terminal-input" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <audio id="meow-sound" src="mp3/meow-1.mp3"></audio>
+
                 </div>
 
             </section>
@@ -62,9 +87,11 @@
                     <img src="images/dumb dog.png" alt="selfie">
                 </div>
 
+                <div class="interests">
                 <h2><em>What do I do?</em></h2>
                 <p>I like gaming, drawing and programming.<br>
                 I will also get into streaming soon.</p>
+                
 
                   <h3><em>Drawing:</em></h3>
                 <p>I don't have a "signature" style in which I draw,
@@ -79,6 +106,7 @@
                 <p>I am still quite new to programming, so I'm not that experienced yet.<br>
                 My favorite programming language is C++, so thats what I'm spending most of my time learning.<br>
                 In the future I want to make games and possibly a platform similar to iiSU to play games on.</p>
+                </div>
             
 
             </section>
@@ -107,5 +135,99 @@
         </footer>  
 
         </div>
+
+        <script>
+
+            // finds the input box in HTML and stores it in variable called input
+            const input = document.getElementById("terminal-input")
+            const terminal = document.getElementById("terminal-body")
+            const meow = document.getElementById("meow-sound")
+
+            // adds an eventlistener to input box 
+            // keydown gets triggered every time a key in pressed while input
+            // function(e) is a function that runs on that event, e contains info about which key
+            input.addEventListener("keydown", function(e) {
+                if (e.key === "Enter")
+            {
+                const command = input.value.trim();
+                input.value = "";
+
+                // print command
+                const inputLine = document.getElementById("terminal-input-line");
+                inputLine.insertAdjacentHTML(
+                    "beforebegin",
+                    `<p><span class="prompt">$</span> ${command}</p>`
+                );
+
+                // command handling
+                if (command === "/meow") 
+                {
+                    meow.currentTime = 0;
+                    meow.play();
+                    inputLine.insertAdjacentHTML(
+                        "beforebegin",
+                         `<p>mrrp mrrp mrow</p>`);
+                }
+            else if (command === "/help")
+            {
+                inputLine.insertAdjacentHTML(
+                    "beforebegin",
+                    `<p>COMMAND LIST<br>
+                       1. "/discord" gives my user<br>
+                       2. "/time" gives the time in my timezone<br>
+                       3. "/clear" clears the terminal<br>
+                       4. "/meow" meow</p>`);
+
+                    }
+
+                    else if (command === "/clear")
+                    {
+                        // clear everything except the input line
+                        const inputLine = terminal.querySelector("input-line");
+                        terminal.innerHTML = ""; // empty terminal
+                        terminal.appendChild(inputLine); // add the input back
+                        inputLine.querySelector("input").focus();
+                        ;
+                    }
+
+                    else if (command === "/discord")
+                    {
+                        inputLine.insertAdjacentHTML(
+                            "beforebegin",
+                            `<p>Add me!!<br>
+                                My username is nullptr_effy</p>`
+                        );
+                    }
+
+                    else if (command == "/time")
+                    {
+                        const options = {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                            hour12: true,
+                            timeZone: 'Europe/Amsterdam' 
+                        };
+
+                        const formatter = new Intl.DateTimeFormat('en-GB', options);
+                        const currentTime = formatter.format(new Date());
+
+                        inputLine.insertAdjacentHTML("beforebegin", `<p>Effy's time: ${currentTime}</p>`);
+                    }
+
+            else
+            {
+                inputLine.insertAdjacentHTML(
+                    "beforebegin",
+                    `<p>command not found</p>`
+                );
+
+            }
+            
+            // PLEASE JUST WORK
+            terminal.scrollTop = terminal.scrollHeight;
+            }
+        }); 
+            </script>
     </body>
 </html>
